@@ -1,11 +1,24 @@
-
+//import { db } from './firebase';
 //import { Routes, Route } from "react-router-dom";
+import './styling/styling.css'
 
-function app(){
+function app() {
     return (
-        <div>
-            <h1>This is workspace</h1>
-        </div>
+        <>
+            <main>
+                <div className={"Nav-bar"}>
+                    navbar
+                </div>
+                <div className={"Posts-container"}>
+                    Posts container
+                </div>
+                <div className="Contents-container">
+                    <div className="Content-bar">
+
+                    </div>
+                </div>
+            </main>
+        </>
     )
 }
 
