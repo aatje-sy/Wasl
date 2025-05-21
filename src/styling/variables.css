@@ -11,7 +11,12 @@
     --font-size-xlarge: 1.75rem;
 
     /* spacing */
-    --spacing-xsmall: 4px;
-    --spacing-regular: 6px;
-    --spacing-large: 8px;
+    --spacing-xsmall: 10px;
+    --spacing-regular: 15px;
+    --spacing-large: 25px;
+
+    /* Border Radius */
+    --radius-small: 10px;
+    --radius-regular: 15px;
+    --radius-large: 20px;
 }
