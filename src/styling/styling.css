@@ -1,0 +1,67 @@
+@import "variables.css";
+
+*{
+    margin: 0;
+    padding: 0;
+}
+html,body{
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    font-family: "Inter", sans-serif;
+}
+header{
+    height: 50px;
+    background-color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    font-family: "Nunito", sans-serif;
+}
+.quotes-container{
+    color: #A0A0A0;
+}
+.x{
+    height: 50px;
+    width: 50px;
+    background-color: aqua;
+    border:  1px solid var(--primary-color);
+}
+main{
+    height:  max-content;
+    width:   100%;
+    display: flex;
+}
+.Nav-bar{
+    width: 100px;
+    background-color: var(--primary-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.Posts-container{
+    display: flex;
+    justify-content: center;
+    flex: 1;
+}
+.container{
+    width: 80%;
+    height: 100%;
+    background-color: var(--special-color);
+    border-top-left-radius: var(--radius-large);
+    border-top-right-radius: var(--radius-large);
+}
+.Contents-container{
+    width: 40%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: var(--spacing-regular);
+}
+.Content-bar{
+    height: 300px;
+    width: 90%;
+    background-color: var(--special-color);
+    border-radius: var(--radius-large);
+}
