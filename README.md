@@ -1,12 +1,14 @@
 # 🌐 Wasl
-Wasl is a modern social media platform built with React, inspired by the Arabic word for “connection.”
+Wasl is a modern social media platform built with React, inspired by the Arabic word for “connection.”  
 It brings people together through seamless interaction, clean design, and a focus on meaningful communication.
 
-
-# 🗂️ Project Board (Scrum/Trello):
-We manage our sprints, backlog, and user stories using Trello.
-
+# 🗂️ Project Board (Scrum/Trello)
+We manage our sprints, backlog, and user stories using Trello.  
 [Wasl Trello Link](https://trello.com/invite/b/68232b4d17b3de7209ca6480/ATTIecc3a5e622de9ec8c3f53706814a76598FD8A6AA/frontend-wasl)
+
+# 🎨 Figma Design
+Our UI/UX design process and mockups are managed in Figma.  
+[Wasl Figma Design](https://www.figma.com/design/mlDOqpjCPID352z8sPXmj3/Wasl?node-id=5-83&t=vT80nz3kBPQLgvyP-1)
 
 # Vite
 
