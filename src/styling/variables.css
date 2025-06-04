@@ -5,6 +5,7 @@
     --special-color: #181818;
 
     /* Font sizes */
+    --font-size-xxsmall: 0.8rem;
     --font-size-xsmall: 1.1rem;
     --font-size-small: 1.25rem ;
     --font-size-regular: 1.5rem;
@@ -16,6 +17,7 @@
     --spacing-large: 25px;
 
     /* Border Radius */
+    --radius-xsmall: 5px;
     --radius-small: 10px;
     --radius-regular: 15px;
     --radius-large: 20px;
