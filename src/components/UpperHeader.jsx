@@ -1,17 +1,15 @@
 import UserIcon from '/src/assets/user-icon.svg'
 
-const UpperHeader = () => {
+const UpperNav = () => {
     return (
-        <header className="upper-header">
-            <h1>Wasl</h1>
-            <div className="quotes-container">
-                <p>Here will come a quote</p>
-            </div>
-            <div className="profile-icon">
-                <img src={UserIcon} alt="User icon"/>
+        <header className="upper-nav-container">
+            <div className="upper-nav-left">Wasl</div>
+            <div className="upper-nav-center">Vandaag is een nieuwe kans.</div>
+            <div className="upper-nav-right">
+                <img src={UserIcon} alt="Profile" />
             </div>
         </header>
     );
-}
+};
 
-export default UpperHeader;
+export default UpperNav;

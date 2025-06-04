@@ -36,8 +36,8 @@
 }
 
 .side-nav-icon-container img {
-    width: var(--main-icon-size);
-    height: var(--main-icon-size);
+    width: var(--icon-size-md);
+    height: var(--icon-size-md);
     cursor: pointer;
     filter: brightness(0.8);
     transition: filter var(--transition-speed);
