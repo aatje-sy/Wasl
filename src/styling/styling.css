@@ -1,7 +1,6 @@
 @import "variables.css";
 @import "side-header.css";
 @import "upper-header.css";
-
 * {
     margin: 0;
     padding: 0;
@@ -57,20 +56,17 @@ main {
     border-top-right-radius: var(--radius-large);
     overflow-y: auto;
     scroll-behavior: smooth;
-    padding-top: 20px;
+    padding-top: 50px;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 .post-card{
-    height: 300px;
+    height: auto;
     width: 80%;
     font-size: var(--font-size-xxsmall);
     display: flex;
     gap: var(--radius-regular);
-}
-.side-container{
-
 }
 .details-container{
     display: flex;
@@ -96,6 +92,11 @@ main {
     height: 20px;
     width: 20px;
     object-fit: contain;
+}
+.divider{
+    height: 2px;
+    width: 90%;
+    background-color:  var(--secondary-color);
 }
 .container::-webkit-scrollbar {
     width: 8px;

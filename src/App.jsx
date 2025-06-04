@@ -10,8 +10,10 @@ function App() {
     return (
         <>
             <UpperHeader />
-            <SideHeader />
-            <Feed />
+            <main>
+                <SideHeader />
+                <Feed />
+            </main>
         </>
     )
 }
