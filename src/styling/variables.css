@@ -18,7 +18,13 @@
 
     /* Border Radius */
     --radius-xsmall: 5px;
-    --radius-small: 10px;
+    --radius-small: 12px;
     --radius-regular: 15px;
     --radius-large: 20px;
+
+    --nav-border-color: #1d1d1d;
+
+    --transition-speed: 0.3s;
+
+    --main-icon-size: 24px
 }
