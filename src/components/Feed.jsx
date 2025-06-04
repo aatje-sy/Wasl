@@ -1,13 +1,14 @@
-import { collection, onSnapshot, query, orderBy } from "firebase/firestore";
+import { collection, onSnapshot, query} from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { db } from "../firebase";
 import PostCard from "./PostCard";
+import PostCreator from "./PostCreator";
 
 const Feed = () => {
     const [posts, setPosts] = useState([]);
 
     useEffect(() => {
-        const q = query(collection(db, "posts"), orderBy("createdAt", "desc"));
+        const q = query(collection(db, "posts"));
         const unsubscribe = onSnapshot(q, (snapshot) => {
             const fetchedPosts = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
             setPosts(fetchedPosts);
@@ -19,6 +20,7 @@ const Feed = () => {
     return (
         <div className="Posts-container">
             <section className="container">
+                <PostCreator />
                 {posts.map(post => (
                     <PostCard key={post.id} post={post} />
                 ))}

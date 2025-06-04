@@ -24,7 +24,7 @@ const PostCard = ({ post }) => {
                 <div className="details-container">
                     <div className="user-info-container">
                         <h4>{username || "Unknown"}</h4>
-                        <p>{date || "Unknown date"}</p>
+                        <p className={"post-date"}>{date || "Unknown date"}</p>
                     </div>
 
                     <p>{content}</p>

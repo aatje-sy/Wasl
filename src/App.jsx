@@ -3,6 +3,7 @@
 import UpperHeader from './components/UpperHeader.jsx';
 import SideHeader from './components/SideHeader.jsx';
 import Feed from './components/Feed.jsx'
+import Goals from "./components/Goals.jsx";
 import './styling/styling.css'
 //import image from '../public/assets/profile-photo.png';
 
@@ -13,6 +14,7 @@ function App() {
             <main>
                 <SideHeader />
                 <Feed />
+                <Goals />
             </main>
         </>
     )

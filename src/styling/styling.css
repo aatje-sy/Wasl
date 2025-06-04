@@ -77,6 +77,9 @@ main {
     display: flex;
     gap: var(--radius-small);
 }
+.post-date{
+    color: #777777;
+}
 .actions-container{
     display: flex;
     height: 50px;
