@@ -5,6 +5,7 @@ import AddImageIcon from '/src/assets/add-image.svg';
 import { addDoc, collection, doc, getDoc, serverTimestamp } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 import { db } from "../firebase";
+import { uploadImageToSupabase } from "./utils";
 
 PostingModal.propTypes = {
     isOpen: PropTypes.bool.isRequired,
@@ -13,6 +14,7 @@ PostingModal.propTypes = {
 
 function PostingModal({ isOpen, onClose }) {
     const [content, setContent] = useState("");
+    const [imageFile, setImageFile] = useState(null);
     const [isSubmitting, setIsSubmitting] = useState(false);
 
     const auth = getAuth();
@@ -21,6 +23,12 @@ function PostingModal({ isOpen, onClose }) {
     if (!isOpen || !user) return null;
 
     const handlePost = async () => {
+        let imageUrl = "";
+
+        if (imageFile) {
+            imageUrl = await uploadImageToSupabase(imageFile);
+        }
+
         if (!content.trim()) return;
 
         setIsSubmitting(true);
@@ -34,7 +42,7 @@ function PostingModal({ isOpen, onClose }) {
                 username: userData.username || "Unknown",
                 userAvatarUrl: userData.avatarUrl || "",
                 content,
-                imageUrl: "",
+                imageUrl,
                 createdAt: serverTimestamp(),
                 likes: 0,
                 comments: 0,
@@ -87,6 +95,7 @@ function PostingModal({ isOpen, onClose }) {
                         type="file"
                         accept="image/*"
                         style={{ display: "none" }}
+                        onChange={(e) => setImageFile(e.target.files[0])}
                     />
                     <button onClick={handlePost} disabled={isSubmitting} className="post-btn">
                         {isSubmitting ? "Posting..." : "Post"}
