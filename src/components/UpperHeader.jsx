@@ -1,17 +1,24 @@
 import UserIcon from '/src/assets/user-icon.svg'
+import quotesData from '/src/data/quotes.json'
+import {useEffect, useState} from "react";
 
-const UpperHeader = () => {
+
+const UpperNav = () => {
+    const [quote, setQuote] = useState("");
+    useEffect(() => {
+        const randomIndex = Math.floor(Math.random() * quotesData.quotes.length);
+        const randomQuote = quotesData.quotes[randomIndex];
+        setQuote(`${randomQuote.quote} — ${randomQuote.author}`);
+    }, []);
     return (
-        <header className="upper-header">
-            <h1>Wasl</h1>
-            <div className="quotes-container">
-                <p>Here will come a quote</p>
-            </div>
-            <div className="profile-icon">
-                <img src={UserIcon} alt="User icon"/>
+        <header className="upper-nav-container">
+            <div className="upper-nav-left">Wasl</div>
+            <div className="upper-nav-center">{quote}</div>
+            <div className="upper-nav-right">
+                <img src={UserIcon} alt="Profile"/>
             </div>
         </header>
     );
-}
+};
 
-export default UpperHeader;
+export default UpperNav;

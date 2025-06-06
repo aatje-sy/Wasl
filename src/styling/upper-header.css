@@ -1,4 +1,37 @@
+.upper-nav-container {
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2rem;
+    color: var(--secondary-color);
+}
 
-.quotes-container{
-    color: #A0A0A0;
+.upper-nav-left {
+    font-size: var(--font-size-regular);
+    font-weight: bold;
+}
+
+.upper-nav-center {
+    font-size: var(--font-size-xxsmall);
+    color: var(--secondary-color);
+    animation: fadeIn 1s ease-in;
+}
+
+.upper-nav-right img {
+    width: var(--icon-size-lg);
+    height: var(--icon-size-lg);
+    border-radius: var(--circle-radius);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.upper-nav-right img:hover {
+    transform: scale(1.1);
+}
+
+/* fade animatie */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
 }
