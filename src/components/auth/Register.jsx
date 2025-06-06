@@ -9,6 +9,7 @@ function Register() {
     // States om de inputwaarden van het formulier op te slaan
     const [firstname, setFirstname] = useState("");
     const [lastname, setLastname] = useState("");
+    const [username, setusername] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [phonenumber, setPhonenumber] = useState("");
@@ -22,7 +23,7 @@ function Register() {
 
         try {
             // Maak gebruiker aan met email en wachtwoord
-            const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+            const userCredential = await createUserWithEmailAndPassword(auth, email, password ,);
             const user = userCredential.user;
 
             // Sla extra gegevens van de gebruiker op in Firestore
@@ -31,6 +32,7 @@ function Register() {
                 lastname,
                 phonenumber,
                 email,
+                username,
                 createdAt: new Date() // tijdstip van registratie
             });
 
@@ -83,6 +85,15 @@ function Register() {
                     placeholder="you@example.com"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
+                />
+
+                <label htmlFor="Username">Username</label>
+                <input
+                    type="Username"
+                    id="Username"
+                    placeholder="your username here"
+                    value={username}
+                    onChange={(e) => setusername(e.target.value)}
                 />
 
                 <label htmlFor="password">Password</label>

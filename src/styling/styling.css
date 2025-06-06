@@ -1,6 +1,7 @@
 @import "variables.css";
 @import "side-header.css";
 @import "upper-header.css";
+@import "posting-modal.css";
 * {
     margin: 0;
     padding: 0;
@@ -13,6 +14,13 @@ html, body {
     font-family: "Inter", sans-serif;
     background-color: var(--primary-color);
     color: var(--secondary-color);
+}
+
+p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--secondary-color);
+    font-weight: 400;
 }
 
 header {
@@ -41,12 +49,6 @@ main {
     align-items: center;
     justify-content: center;
 }
-.x{
-    height: 45px;
-    width: 45px;
-    background-color: bisque;
-    border:  2px solid blue;
-}
 .container {
     height: 100%;
     width: 45vw;
@@ -56,12 +58,13 @@ main {
     border-top-right-radius: var(--radius-large);
     overflow-y: auto;
     scroll-behavior: smooth;
-    padding-top: 50px;
+    padding-top: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 .post-card{
+    padding-top: var(--spacing-large);
     height: auto;
     width: 80%;
     font-size: var(--font-size-xxsmall);
