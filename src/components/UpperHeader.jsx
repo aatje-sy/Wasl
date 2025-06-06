@@ -1,13 +1,14 @@
 import UserIcon from '/src/assets/user-icon.svg'
+import quotesData from '/src/data/quotes.json'
 import {useEffect, useState} from "react";
+
 
 const UpperNav = () => {
     const [quote, setQuote] = useState("");
     useEffect(() => {
-        fetch("https://api.quotable.io/random")
-            .then(res => res.json())
-            .then(data => setQuote(`${data.content} — ${data.author}`))
-            .catch(() => setQuote("Stay consistent. Small steps lead to big results."));
+        const randomIndex = Math.floor(Math.random() * quotesData.quotes.length);
+        const randomQuote = quotesData.quotes[randomIndex];
+        setQuote(`${randomQuote.quote} — ${randomQuote.author}`);
     }, []);
     return (
         <header className="upper-nav-container">
