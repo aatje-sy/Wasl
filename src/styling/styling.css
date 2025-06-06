@@ -63,6 +63,7 @@ main {
     align-items: center;
 }
 .post-card{
+    padding-top: var(--spacing-large);
     height: auto;
     width: 80%;
     font-size: var(--font-size-xxsmall);
