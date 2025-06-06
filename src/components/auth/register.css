@@ -1,59 +1,61 @@
-.registration-container {
-    background-color: #1e1e1e;
-    padding: 40px;
-    border-radius: 16px;
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
-    width: 100%;
-    max-width: 400px;
-}
+    .registration-container {
+        background-color: #1e1e1e;
+        padding: 40px;
+        border-radius: 16px;
+        box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+        width: 100%;
+        max-width: 400px;
+    }
 
-.register-form {
-    display: flex;
-    flex-direction: column;
-}
 
-.register-form h2 {
-    margin-bottom: 20px;
-    text-align: center;
-}
 
-.register-form label {
-    margin-bottom: 8px;
-    font-size: 14px;
-    color: #ccc;
-}
+    .register-form {
+        display: flex;
+        flex-direction: column;
+    }
 
-.register-form input {
-    padding: 12px;
-    margin-bottom: 20px;
-    border: none;
-    border-radius: 8px;
-    background-color: #121212;
-    color: #fff;
-}
+    .register-form h2 {
+        margin-bottom: 20px;
+        text-align: center;
+    }
 
-.register-form button {
-    padding: 12px;
-    background-color: #ffffff;
-    color: #000;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background 0.3s;
-}
+    .register-form label {
+        margin-bottom: 8px;
+        font-size: 14px;
+        color: #ccc;
+    }
 
-.register-form button:hover {
-    background-color: #cccccc;
-}
+    .register-form input {
+        padding: 12px;
+        margin-bottom: 20px;
+        border: none;
+        border-radius: 8px;
+        background-color: #121212;
+        color: #fff;
+    }
 
-.login-link {
-    text-align: center;
-    font-size: 14px;
-    margin-top: 16px;
-    color: #888;
-}
+    .register-form button {
+        padding: 12px;
+        background-color: #ffffff;
+        color: #000;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
 
-.login-link a {
-    color: #fff;
-    text-decoration: underline;
-}
+    .register-form button:hover {
+        background-color: #cccccc;
+    }
+
+    .login-link {
+        text-align: center;
+        font-size: 14px;
+        margin-top: 16px;
+        color: #888;
+    }
+
+    .login-link a {
+        color: #fff;
+        text-decoration: underline;
+    }

@@ -1,84 +1,108 @@
-// Import React hook to manage state
+// File: src/components/auth/Login.jsx
+
 import { useState } from "react";
+import { signInWithEmailAndPassword } from "firebase/auth";        // Firebase Auth function
+import { collection, query, where, getDocs } from "firebase/firestore"; // Firestore lookup
+import { useNavigate } from "react-router-dom";                    // React Router redirect
+import './login.css';                                              // Corresponding CSS
+import { auth, db } from "../../firebase";                        // Your Firebase instances
 
-// Import Firebase function to log in a user
-import { signInWithEmailAndPassword } from "firebase/auth";
-
-// Import useNavigate to redirect user after login
-import { useNavigate } from "react-router-dom";
-
-// Import CSS styling
-import './login.css';
-
-// Import Firebase auth instance
-import { auth } from "../../firebase"; // Update this path if needed
-
+/**
+ * Login form that accepts either "email" or "username" in a single field.
+ * If the value contains "@", we treat it as an email. Otherwise, we query Firestore
+ * to find the user’s email by the username field in "users" collection.
+ */
 function Login() {
-    // State variables for form input and error messages
-    const [email, setEmail] = useState("");           // Stores user's email
-    const [password, setPassword] = useState("");     // Stores user's password
-    const [err, setErr] = useState("");               // Stores any login error messages
+    // State: single field for email/username, password, and errors
+    const [identifier, setIdentifier] = useState(""); // Could be email OR username
+    const [password, setPassword]     = useState("");
+    const [err, setErr]               = useState("");
 
-    const navigate = useNavigate(); // Used to navigate to a different route after login
+    const navigate = useNavigate(); // To redirect on successful login
 
-    // Function that handles the form submission
+    // When the form is submitted:
     const handleSubmit = async (e) => {
-        e.preventDefault(); // Prevents the page from refreshing
+        e.preventDefault();
+        setErr(""); // Clear previous error
+
+        let emailToUse = "";
 
         try {
-            // Try to sign in the user with the provided email and password
-            const userCredential = await signInWithEmailAndPassword(auth, email, password);
-            const user = userCredential.user;
+            // 1️⃣ Check if identifier contains '@' => treat as email:
+            if (identifier.includes("@")) {
+                emailToUse = identifier.trim();
+            } else {
+                // 2️⃣ Otherwise, treat as username => look up in Firestore:
+                const usersRef = collection(db, "users");
+                const q = query(usersRef, where("username", "==", identifier.trim()));
+                const querySnapshot = await getDocs(q);
 
-            // Print user info to the console (for debugging)
-            console.log("User logged in:", user);
+                if (querySnapshot.empty) {
+                    throw new Error("No user found with that username.");
+                }
 
-            // Redirect the user to the homepage or profile page
+                // If multiple users have same username (unlikely), pick the first:
+                const userDoc = querySnapshot.docs[0];
+                const userData = userDoc.data();
+
+                if (!userData.email) {
+                    throw new Error("User record is missing email field.");
+                }
+                emailToUse = userData.email;
+            }
+
+            // 3️⃣ Sign in with the resolved email + password
+            const userCredential = await signInWithEmailAndPassword(auth, emailToUse, password);
+            console.log("User logged in:", userCredential.user);
+
+            // 4️⃣ Redirect to home (or "/profile", etc.)
             navigate("/");
-
         } catch (error) {
-            // If something goes wrong, show error in console and on screen
-            console.log(error.message);
+            console.error(error);
+            // Display a friendly message (Firebase errors are often verbose):
             setErr(error.message);
         }
     };
 
     return (
-        <div className="container">
-            <form className="login-form" onSubmit={handleSubmit}>
-                <h2>Login</h2>
+        <div className="page-wrapper">
+            <div className="container-login">
+                <form className="login-form" onSubmit={handleSubmit}>
+                    <h2>Login</h2>
 
-                {/* Email input field */}
-                <label htmlFor="email">Email</label>
-                <input
-                    type="email"
-                    id="email"
-                    placeholder="you@example.com"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                />
+                    {/* Single “identifier” input: either email or username */}
+                    <label htmlFor="identifier">Email or Username</label>
+                    <input
+                        type="text"
+                        id="identifier"
+                        placeholder="Enter email or username"
+                        value={identifier}
+                        onChange={(e) => setIdentifier(e.target.value)}
+                    />
 
-                {/* Password input field */}
-                <label htmlFor="password">Password</label>
-                <input
-                    type="password"
-                    id="password"
-                    placeholder="********"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                />
+                    {/* Password input */}
+                    <label htmlFor="password">Password</label>
+                    <input
+                        type="password"
+                        id="password"
+                        placeholder="Enter password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                    />
 
-                {/* Login button */}
-                <button type="submit">Login</button>
+                    {/* Submit button */}
+                    <button type="submit">Login</button>
 
-                {/* Link to register page if user doesn’t have an account */}
-                <p className="login-link">
-                    Dont have an account? <a href="/register">Register</a>
-                </p>
+                    {/* Link to Register page */}
+                    <p className="login-link">
+                        Don’t have an account?{" "}
+                        <a href="/register">Register</a>
+                    </p>
 
-                {/* Display error message if any */}
-                {err && <p className="error">{err}</p>}
-            </form>
+                    {/* Show any error message */}
+                    {err && <p className="error">{err}</p>}
+                </form>
+            </div>
         </div>
     );
 }
