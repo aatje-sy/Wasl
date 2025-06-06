@@ -34,7 +34,7 @@ function Login() {
             console.log("User logged in:", user);
 
             // Redirect the user to the homepage or profile page
-            navigate("/");
+            navigate("/login");
 
         } catch (error) {
             // If something goes wrong, show error in console and on screen
@@ -73,7 +73,7 @@ function Login() {
 
                 {/* Link to register page if user doesn’t have an account */}
                 <p className="login-link">
-                    Don't have an account? <a href="/register">Register</a>
+                    Dont have an account? <a href="/register">Register</a>
                 </p>
 
                 {/* Display error message if any */}
