@@ -39,7 +39,8 @@ const PostCard = ({ post }) => {
 
                     <div className="actions-container">
                         <div className="actions-box">
-                            <img src={HeartIcon} alt="Heart" />                            <p>{likes}</p>
+                            <img src={HeartIcon} alt="Heart" />
+                            <p>{likes}</p>
                         </div>
                         <div className="actions-box">
                             <img src={CommentIcon} alt="" />

@@ -1,7 +1,7 @@
 :root{
     /* Colors */
     --primary-color: #121212;
-    --secondary-color: #E0E0E0;
+    --secondary-color: #e0e0e0;
     --special-color: #181818;
 
     /* Font sizes */
@@ -12,6 +12,7 @@
     --font-size-xlarge: 1.75rem;
 
     /* spacing */
+    --spacing-xxsmall: 5px;
     --spacing-xsmall: 10px;
     --spacing-regular: 15px;
     --spacing-large: 25px;

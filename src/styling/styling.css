@@ -1,6 +1,7 @@
 @import "variables.css";
 @import "side-header.css";
 @import "upper-header.css";
+@import "posting-modal.css";
 * {
     margin: 0;
     padding: 0;
