@@ -58,7 +58,7 @@ main {
     border-top-right-radius: var(--radius-large);
     overflow-y: auto;
     scroll-behavior: smooth;
-    padding-top: 50px;
+    padding-top: 30px;
     display: flex;
     flex-direction: column;
     align-items: center;
