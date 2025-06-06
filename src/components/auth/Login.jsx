@@ -34,7 +34,7 @@ function Login() {
             console.log("User logged in:", user);
 
             // Redirect the user to the homepage or profile page
-            navigate("/login");
+            navigate("/");
 
         } catch (error) {
             // If something goes wrong, show error in console and on screen
