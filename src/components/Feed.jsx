@@ -2,7 +2,6 @@ import { collection, onSnapshot, query} from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { db } from "../firebase";
 import PostCard from "./PostCard";
-import PostCreator from "./PostCreator";
 
 const Feed = () => {
     const [posts, setPosts] = useState([]);
@@ -20,7 +19,6 @@ const Feed = () => {
     return (
         <div className="Posts-container">
             <section className="container">
-                <PostCreator />
                 {posts.map(post => (
                     <PostCard key={post.id} post={post} />
                 ))}
