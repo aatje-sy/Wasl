@@ -1,7 +1,7 @@
-import HomeIcon from '/src/assets/home-icon.svg'
-import GoalIcon from '/src/assets/goal-icon.svg'
-import SearchIcon from '/src/assets/search-icon.svg'
-
+import HomeIcon from '/src/assets/home-icon.svg';
+import GoalIcon from '/src/assets/goal-icon.svg';
+import SearchIcon from '/src/assets/search-icon.svg';
+import AddPostIcon from '/src/assets/addPost.svg';
 
 function SideHeader() {
     return (
@@ -14,6 +14,8 @@ function SideHeader() {
                     <div className="side-nav-icon-container">
                         <img src={GoalIcon} alt=""/>
                     </div>
+                    <div className="side-nav-icon-container">
+                        <img src={AddPostIcon} alt="" />                    </div>
                     <div className="side-nav-icon-container">
                         <img src={SearchIcon} alt=""/>
                     </div>
