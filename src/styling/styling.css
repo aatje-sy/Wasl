@@ -144,3 +144,40 @@ main {
         justify-content: center;
     }
 }
+/* make the like button completely transparent */
+.heart-btn {
+    background-color: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+/* ensure the icon itself has no background */
+.heart-btn img {
+    background-color: transparent !important;
+}
+
+/* ensure the number has no background */
+.heart-btn p {
+    background-color: transparent !important;
+    color: white;
+}
+.heart-btn {
+    display: flex;
+    align-items: center;
+    gap: 4px;          /* space between icon and number */
+    background: transparent;
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+/* normal (unliked) heart is light/grey */
+.heart-btn img {
+    filter: grayscale(1) brightness(0.8);
+}
+
+/* once liked, swap to red tint */
+.heart-btn.liked img {
+    filter: invert(44%) sepia(84%) saturate(4333%) hue-rotate(329deg)
+    brightness(96%) contrast(90%);
+}

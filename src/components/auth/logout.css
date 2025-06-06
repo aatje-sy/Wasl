@@ -1,0 +1,12 @@
+.logout-btn {
+    background: transparent;
+    border: 1px solid var(--secondary-color);
+    color: var(--secondary-color);
+    padding: 0.25rem 0.75rem;
+    border-radius: var(--radius-small);
+    cursor: pointer;
+}
+.logout-btn:hover {
+    background: var(--secondary-color);
+    color: var(--primary-color);
+}

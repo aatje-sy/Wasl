@@ -1,0 +1,28 @@
+/* src/likes-count/like-count.css */
+
+.heart-btn {
+    cursor: pointer;
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.heart-btn img {
+    /* default (unliked) icon style */
+    filter: grayscale(1) brightness(0.8);
+}
+
+.heart-btn.liked img {
+    /* red tint when liked */
+    filter: invert(44%) sepia(84%) saturate(4333%) hue-rotate(329deg)
+    brightness(96%) contrast(90%);
+}
+
+.heart-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
