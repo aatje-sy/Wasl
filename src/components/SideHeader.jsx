@@ -1,6 +1,6 @@
-import HomeIcon from '/src/assets/home-icon.svg'
-import GoalIcon from '/src/assets/goal-icon.svg'
-import SearchIcon from '/src/assets/search-icon.svg'
+import HomeIcon from '/src/assets/home-icon.svg';
+import GoalIcon from '/src/assets/goal-icon.svg';
+import SearchIcon from '/src/assets/search-icon.svg';
 import AddPostIcon from '/src/assets/addPost.svg';
 
 function SideHeader() {

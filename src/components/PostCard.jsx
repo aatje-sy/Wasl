@@ -1,3 +1,7 @@
+import HeartIcon from '/src/assets/heart-icon.svg';
+import CommentIcon from '/src/assets/comment-icon.svg';
+import ShareIcon from '/src/assets/share-icon.svg';
+
 const PostCard = ({ post }) => {
     const {
         username,
@@ -35,15 +39,14 @@ const PostCard = ({ post }) => {
 
                     <div className="actions-container">
                         <div className="actions-box">
-                            <img className="action-images" src="/assets/heart-icon.png" alt="" />
-                            <p>{likes}</p>
+                            <img src={HeartIcon} alt="Heart" />                            <p>{likes}</p>
                         </div>
                         <div className="actions-box">
-                            <img className="action-images" src="/assets/comments-icon.png" alt="" />
+                            <img src={CommentIcon} alt="" />
                             <p>{comments}</p>
                         </div>
                         <div className="actions-box">
-                            <img className="action-images" src="/assets/share-icon.png" alt="" />
+                            <img src={ShareIcon} alt="" />
                             <p>{shares}</p>
                         </div>
                     </div>
