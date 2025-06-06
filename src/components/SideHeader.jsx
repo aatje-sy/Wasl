@@ -15,7 +15,8 @@ function SideHeader() {
                         <img src={GoalIcon} alt=""/>
                     </div>
                     <div className="side-nav-icon-container">
-                        <img src={AddPostIcon} alt="" />                    </div>
+                        <img src={AddPostIcon} alt="" />
+                    </div>
                     <div className="side-nav-icon-container">
                         <img src={SearchIcon} alt=""/>
                     </div>

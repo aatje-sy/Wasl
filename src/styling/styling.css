@@ -15,6 +15,13 @@ html, body {
     color: var(--secondary-color);
 }
 
+p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--secondary-color);
+    font-weight: 400;
+}
+
 header {
     height: 90px;
     padding: 0 20px;
@@ -40,12 +47,6 @@ main {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-}
-.x{
-    height: 45px;
-    width: 45px;
-    background-color: bisque;
-    border:  2px solid blue;
 }
 .container {
     height: 100%;
