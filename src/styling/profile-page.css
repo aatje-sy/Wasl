@@ -1,0 +1,73 @@
+.Profile-page-container{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+}
+.Profile-card{
+    height: 92%;
+    width: 40%;
+    background-color: var(--special-color);
+    border-top-left-radius: var(--radius-regular);
+    border-top-right-radius: var(--radius-regular);
+    border: 1px solid #333;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    overflow-y: auto;
+    scroll-behavior: smooth;
+}
+.User-information{
+    height: auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap:  var(--spacing-large);
+    padding: var(--spacing-large);
+}
+.User-info-top-section{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--spacing-regular);
+}
+.Profile-page-pfp{
+    height: 4rem;
+    width: 4rem;
+}
+.User-real-name{
+    font-size: var(--font-size-xxsmall);
+    color: #aaa;
+}
+.actions-button-container{
+    display: flex;
+    justify-content: flex-end;
+    width: 65%;
+    gap: var(--spacing-xsmall);
+}
+.follow-button{
+    height:  2rem;
+    width:  30%;
+    border: none;
+    border-radius: var(--radius-small);
+    background-color: var(--secondary-color);
+    font-size: var(--font-size-xxsmall);
+}
+.follow-button:hover{
+    background: #CFCFCF;
+}
+.description-container{
+    width: 100%;
+}
+.connections-container{
+    width: 100%;
+    display: flex;
+    gap: var(--spacing-xsmall);
+}
+.connection-label{
+    color: #aaa;
+}
+.profile-page-hr{
+    border: 1px solid #333;
+}
