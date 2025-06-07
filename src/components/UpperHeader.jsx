@@ -1,5 +1,5 @@
-// src/components/UpperNav.jsx
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import UserIcon from '/src/assets/user-icon.svg';
 import quotesData from '/src/data/quotes.json';
 import LogoutButton from './LogoutButton';
@@ -26,7 +26,9 @@ const UpperNav = () => {
                 />
                 {open && (
                     <div className="dropdown-menu">
-                        <p>Profile</p>
+                        <Link to="/profile">
+                            <p>Profile</p>
+                        </Link>
                         <p>Settings</p>
                         <LogoutButton />
                     </div>

@@ -2,6 +2,7 @@
 @import "side-header.css";
 @import "upper-header.css";
 @import "posting-modal.css";
+@import "profile-page.css";
 * {
     margin: 0;
     padding: 0;
@@ -56,6 +57,8 @@ main {
     background-color: var(--special-color);
     border-top-left-radius: var(--radius-large);
     border-top-right-radius: var(--radius-large);
+    border: 1px solid #333;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     overflow-y: auto;
     scroll-behavior: smooth;
     padding-top: 20px;

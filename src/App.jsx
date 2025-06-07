@@ -4,7 +4,8 @@ import SideHeader from './components/SideHeader.jsx';
 import Feed from './components/Feed.jsx';
 import Goals from "./components/Goals.jsx";
 import Register from "./components/auth/Register.jsx";
-import Login from "./components/auth/Login.jsx"; // ← deze was je vergeten
+import Login from "./components/auth/Login.jsx";
+import Profile from "/src/components/ProfilePage.jsx";
 import './styling/styling.css';
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
         <Routes>
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/profile" element={<Profile />} />
             <Route path="/" element={
                 <>
                     <UpperHeader />
