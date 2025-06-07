@@ -18,6 +18,10 @@
     animation: fadeIn 1s ease-in;
 }
 
+.upper-nav-right {
+    position: relative; /* make dropdown absolute relative to this */
+}
+
 .upper-nav-right img {
     width: var(--icon-size-lg);
     height: var(--icon-size-lg);
@@ -30,7 +34,7 @@
     transform: scale(1.1);
 }
 
-/* fade animatie */
+/* fade animation */
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(-5px); }
     to { opacity: 1; transform: translateY(0); }

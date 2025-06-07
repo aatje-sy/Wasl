@@ -1,10 +1,11 @@
-import UserIcon from '/src/assets/user-icon.svg'
-import quotesData from '/src/data/quotes.json'
-import {useEffect, useState} from "react";
-
+// src/components/UpperNav.jsx
+import React, { useEffect, useState } from 'react';
+import UserIcon from '/src/assets/user-icon.svg';
+import quotesData from '/src/data/quotes.json';
+import LogoutButton from './LogoutButton';
 
 const UpperNav = () => {
-    const [quote, setQuote] = useState("");
+    const [quote, setQuote] = useState('');
     const [open, setOpen] = useState(false);
 
     useEffect(() => {
@@ -12,6 +13,7 @@ const UpperNav = () => {
         const randomQuote = quotesData.quotes[randomIndex];
         setQuote(`${randomQuote.quote} — ${randomQuote.author}`);
     }, []);
+
     return (
         <header className="upper-nav-container">
             <div className="upper-nav-left">Wasl</div>
@@ -26,10 +28,9 @@ const UpperNav = () => {
                     <div className="dropdown-menu">
                         <p>Profile</p>
                         <p>Settings</p>
-                        <p className="danger">Log out</p>
+                        <LogoutButton />
                     </div>
                 )}
-
             </div>
         </header>
     );
