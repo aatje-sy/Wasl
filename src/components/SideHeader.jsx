@@ -4,9 +4,11 @@ import GoalIcon from '/src/assets/goal-icon.svg';
 import SearchIcon from '/src/assets/search-icon.svg';
 import AddPostIcon from '/src/assets/addPost.svg';
 import PostingModal from './PostingModal';
+import SearchModal from './SearchModal';
 
 function SideHeader() {
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isSearchOpen, setIsSearchOpen] = useState(false);
 
     return (
         <>
@@ -25,14 +27,18 @@ function SideHeader() {
                     >
                         <img src={AddPostIcon} alt="Add Post" />
                     </div>
-                    <div className="side-nav-icon-container">
-                        <img src={SearchIcon} alt=""/>
+                    <div
+                        className="side-nav-icon-container"
+                        onClick={() => setIsSearchOpen(true)}
+                        style={{ cursor: 'pointer' }}
+                    >
+                        <img src={SearchIcon} alt="Search" />
                     </div>
                 </div>
             </nav>
 
-            {/* Conditionally render the modal */}
             <PostingModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+            {isSearchOpen && <SearchModal onClose={() => setIsSearchOpen(false)} />}
         </>
     );
 }
