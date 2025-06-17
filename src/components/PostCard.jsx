@@ -57,7 +57,7 @@ const PostCard = ({ post }) => {
 
                         {/* Comments */}
                         <div className="actions-box">
-                            <img src={CommentIcon} alt="Comment" />
+                            <img  src={CommentIcon} alt="Comment" />
                             <p>{comments}</p>
                         </div>
 

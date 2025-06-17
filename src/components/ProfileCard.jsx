@@ -47,7 +47,7 @@ export default function ProfileCard() {
                         </div>
                         <div className="actions-button-container">
                             <button className="follow-button">Follow</button>
-                            <img src={SettingsIcon} alt="Settings"/>
+                            <button className="follow-button edit-profile-button">Edit profile</button>
                         </div>
                     </div>
                     <div className="description-container">
@@ -59,15 +59,14 @@ export default function ProfileCard() {
                     </div>
                 </div>
                 <hr className="profile-page-hr"/>
-            </div>
-
-            <div className="posts-container">
-                {userPosts.map(post => (
-                    <div key={post.id} className="post-card">
-                        <PostCard post={post} />
-                        <button className="edit-post-btn"></button>
-                    </div>
-                ))}
+                <div className="posts-container">
+                    {userPosts.map(post => (
+                        <div key={post.id} className="post-card">
+                            <PostCard post={post} />
+                            <button className="edit-post-btn"></button>
+                        </div>
+                    ))}
+                </div>
             </div>
         </section>
     );
