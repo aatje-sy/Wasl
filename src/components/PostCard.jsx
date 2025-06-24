@@ -1,9 +1,12 @@
-import React from "react";
+import React, {useState} from "react";
 import CommentIcon from "/src/assets/comment-icon.svg";
 import ShareIcon from "/src/assets/share-icon.svg";
 import LikesCount from "/src/likes-count/likes-count";
+import Comments from "./Comments.jsx";
 
 const PostCard = ({ post }) => {
+    const [isCommentModalOpen, setIsCommentModalOpen] = useState(false);
+
     const {
         username,
         createdAt,
@@ -56,7 +59,7 @@ const PostCard = ({ post }) => {
                         </div>
 
                         {/* Comments */}
-                        <div className="actions-box">
+                        <div className="actions-box" onClick={() => setIsCommentModalOpen(true)}>
                             <img  src={CommentIcon} alt="Comment" />
                             <p>{comments}</p>
                         </div>
@@ -69,8 +72,12 @@ const PostCard = ({ post }) => {
                     </div>
                 </div>
             </div>
-
             <hr className="divider" />
+            <Comments
+            isOpen={isCommentModalOpen}
+            onClose={() => setIsCommentModalOpen(false)}
+            postId={id}
+            />
         </>
     );
 };
