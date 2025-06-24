@@ -76,7 +76,7 @@ const PostCard = ({ post }) => {
             <Comments
             isOpen={isCommentModalOpen}
             onClose={() => setIsCommentModalOpen(false)}
-            postId={post.id}
+            postId={id}
             />
         </>
     );

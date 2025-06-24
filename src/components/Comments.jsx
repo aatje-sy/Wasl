@@ -1,41 +1,46 @@
 import PropTypes from "prop-types";
-import {useState, useEffect} from "react";
-import {addDoc, collection, getDocs, serverTimestamp} from "firebase/firestore";
-import {getAuth} from "firebase/auth";
+import {useState, useEffect} from 'react';
+import {addDoc, collection, getDoc, getDocs, doc, serverTimestamp} from 'firebase/firestore';
+import {getAuth} from 'firebase/auth';
 import {db} from "../firebase.js"
 import CloseButtonIcon from '/src/assets/close-btn.svg';
 import SendIcon from '/src/assets/send-icon.svg';
+import userIcon from '/src/assets/user-icon.svg'
 
 
-const Comments = ({ isOpen, onClose, postId}) => {
+const Comments = ({isOpen, onClose, postId}) => {
     const [commentTxt, setCommentTxt] = useState("");
     const [comments, setComments] = useState([]);
     const auth = getAuth();
     const user = auth.currentUser;
 
     // Comment logic to send
-    function submitComment(postId, user, content){
+    async function submitComment(postId, user, content) {
         if (!content.trim()) return;
 
         try {
-            addDoc(collection(db, "posts", postId, "comments"), {
+            const userDoc = await getDoc(doc(db, "users", user.uid));
+            const userData = userDoc.exists() ? userDoc.data() : {};
+            await addDoc(collection(db, "posts", postId, "comments"), {
                 userId: user.uid,
-                username: user.displayName,
-                avatar: user.photoURL,
+                // username opgehaald via firestore en niet via firebase, want soms is username null
+                username: userData.username,
+                avatar: userData.avatarUrl || user.photoURL || userIcon,
                 content: content,
                 createdAt: serverTimestamp(),
             })
             console.log('comment added')
-        }catch (err){
+        } catch (err) {
             console.error("Error: ", err);
         }
     }
+
     // useEffect to fetch the comments
     useEffect(() => {
         if (!isOpen) return;
         getDocs(collection(db, "posts", postId, "comments"))
-            .then(commentsData => {
-                const allComments = commentsData.docs.map(doc => doc.data());
+            .then(snapshot => {
+                const allComments = snapshot.docs.map(doc => doc.data());
                 setComments(allComments);
             })
             .catch(err => console.error("Error: ", err));
@@ -46,7 +51,7 @@ const Comments = ({ isOpen, onClose, postId}) => {
             <div className="modal-content" onClick={(e) => e.stopPropagation()}>
                 <div className="buttons-container">
                     <button className="close-btn" onClick={onClose}>
-                        <img src={CloseButtonIcon} alt="Close" />
+                        <img src={CloseButtonIcon} alt="Close"/>
                     </button>
                 </div>
 
@@ -54,12 +59,13 @@ const Comments = ({ isOpen, onClose, postId}) => {
                 <div className="comments-list">
                     {comments.map((comment, i) => (
                         <div key={i} className="comment-item">
-                            <strong>{comment.username || "Onbekend"}:</strong> {comment.content}
+                            <img src={comment.avatar} alt=""/>
+                            <strong>{ comment.username || "Onbekend"}:</strong> {comment.content}
                         </div>
                     ))}
                 </div>
 
-                <hr />
+                <hr/>
                 <div className="comment-input-row">
                     <input
                         type="text"
@@ -72,10 +78,10 @@ const Comments = ({ isOpen, onClose, postId}) => {
                         <button
                             className="post-btn comment-send-icon"
                             onClick={() => {
-                            submitComment(postId, user, commentTxt);
+                                submitComment(postId, user, commentTxt);
                                 setCommentTxt("")
-                        }}>
-                            <img src={SendIcon} alt="Send" />
+                            }}>
+                            <img src={SendIcon} alt="Send"/>
                         </button>
                     </div>
                 </div>
