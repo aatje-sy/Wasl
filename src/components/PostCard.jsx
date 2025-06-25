@@ -1,4 +1,6 @@
-import React, {useState} from "react";
+import React, { useState, useEffect } from "react";
+import { getDocs, collection } from "firebase/firestore";
+import { db } from "../firebase";
 import CommentIcon from "/src/assets/comment-icon.svg";
 import ShareIcon from "/src/assets/share-icon.svg";
 import LikesCount from "/src/likes-count/likes-count";
@@ -39,8 +41,6 @@ const PostCard = ({post}) => {
     return (
         <>
             <div className="post-card">
-
-
                 <div className="details-container">
                     <div className="user-info-container">
                         <Link to={`/profile/${post.userId}`} className="user-link">
@@ -90,10 +90,10 @@ const PostCard = ({post}) => {
             </div>
             <hr className="divider"/>
             <Comments
-            isOpen={isCommentModalOpen}
-            onClose={() => setIsCommentModalOpen(false)}
-            postId={id}
-            commentCount={increasCommentCount}
+                isOpen={isCommentModalOpen}
+                onClose={() => setIsCommentModalOpen(false)}
+                postId={id}
+                commentCount={increasCommentCount}
             />
         </>
     );
