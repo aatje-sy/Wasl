@@ -73,11 +73,10 @@ export default function ProfileCard() {
 
                 <hr className="profile-page-hr"/>
 
-                <div className="posts-container">
+                <div className="profile-post-container">
                     {userPosts.map((post) => (
-                        <div key={post.id} className="post-card">
+                        <div key={post.id} className="profile-post-card">
                             <PostCard post={post}/>
-                            <button className="edit-post-btn"></button>
                         </div>
                     ))}
                 </div>

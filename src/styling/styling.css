@@ -1,6 +1,7 @@
 @import "variables.css";
 @import "side-header.css";
 @import "upper-header.css";
+@import "post-card.css";
 @import "posting-modal.css";
 @import "profile-page.css";
 @import "search-modal.css";
@@ -68,42 +69,6 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-.post-card{
-    padding-top: var(--spacing-large);
-    height: auto;
-    width: 80%;
-    font-size: var(--font-size-xxsmall);
-    display: flex;
-    gap: var(--radius-regular);
-}
-.details-container{
-    display: flex;
-    flex-direction: column;
-    gap: var(--radius-regular);
-}
-.user-info-container{
-    display: flex;
-    gap: var(--radius-small);
-}
-.post-date{
-    color: #777777;
-}
-.actions-container{
-    display: flex;
-    height: 50px;
-    width: 60%;
-    gap: var(--radius-regular);
-}
-.actions-box{
-    display: flex;
-    align-items: center;
-    gap: var(--radius-xsmall);
-}
-.divider{
-    height: 2px;
-    width: 90%;
-    background-color:  var(--secondary-color);
 }
 .container::-webkit-scrollbar {
     width: 8px;
