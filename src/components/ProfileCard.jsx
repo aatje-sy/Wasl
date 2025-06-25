@@ -4,7 +4,6 @@ import {doc, getDoc, collection, query, where, getDocs} from "firebase/firestore
 import {db} from "../firebase";
 import PostCard from "../components/PostCard";
 import EditProfileModal from "./EditProfileModal";
-import SettingsIcon from "/src/assets/settings-icon.svg";
 
 export default function ProfileCard() {
     const [userData, setUserData] = useState(null);

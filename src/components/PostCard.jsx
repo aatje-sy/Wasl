@@ -60,11 +60,7 @@ const PostCard = ({post}) => {
                         <img
                             src={imageUrl}
                             alt="Post"
-                            style={{
-                                maxWidth: "100%",
-                                marginTop: "10px",
-                                borderRadius: "10px",
-                            }}
+                            className={"post-image"}
                         />
                     )}
 

@@ -1,9 +1,10 @@
-import { useEffect, useState } from 'react';
-import { collection, query, where, getDocs } from 'firebase/firestore';
-import { db } from '../firebase'; // pas aan als jouw firebase config ergens anders staat
-import '../styling/styling.css'; // voor styling consistentie
+import {useEffect, useState} from 'react';
+import {collection, query, where, getDocs} from 'firebase/firestore';
+import {db} from '../firebase';
+import '../styling/styling.css';
+import {Link} from "react-router-dom";
 
-export default function SearchModal({ onClose }) {
+export default function SearchModal({onClose}) {
     const [input, setInput] = useState('');
     const [results, setResults] = useState([]);
 
@@ -60,9 +61,14 @@ export default function SearchModal({ onClose }) {
                     {results.map(item => (
                         <div key={item.id} className="search-result-item">
                             {item.type === 'user' ? (
-                                <div>👤 {item.username || item.firstName}</div>
-                            ) : (
-                                <p>📝 {item.content}</p>                            )}
+
+                                <Link to={`/profile/${item.id}`} className="link-decoration search-user-link">
+                                    👤 {item.username || item.firstName}
+                                </Link>) : (
+
+                                <Link to={`/profile/${item.userId}`} className=" link-decoration search-post-link">
+                                    📝 {item.content}
+                                </Link>)}
                         </div>
                     ))}
                 </div>

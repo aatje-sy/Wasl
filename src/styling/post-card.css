@@ -1,5 +1,4 @@
 .post-card{
-    padding-top: var(--spacing-large);
     height: auto;
     width: 80%;
     font-size: var(--font-size-xxsmall);
@@ -18,7 +17,8 @@
     display: flex;
     gap: var(--radius-small);
     align-items: center;
-    margin-right: 10%;
+    padding-top: 1rem;
+
 }
 .user-link {
     display: flex;
@@ -29,6 +29,10 @@
 }
 .post-date{
     color: #777777;
+}
+.post-image{
+    height: 50%;
+    width: 80%;
 }
 .actions-container{
     display: flex;
