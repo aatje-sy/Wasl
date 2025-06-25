@@ -1,4 +1,6 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../firebase";
 import CommentIcon from "/src/assets/comment-icon.svg";
 import ShareIcon from "/src/assets/share-icon.svg";
 import LikesCount from "/src/likes-count/likes-count";
@@ -6,6 +8,7 @@ import Comments from "./Comments.jsx";
 
 const PostCard = ({ post }) => {
     const [isCommentModalOpen, setIsCommentModalOpen] = useState(false);
+    const [commentCount, setCommentCount] = useState(0);
 
     const {
         username,
@@ -21,6 +24,18 @@ const PostCard = ({ post }) => {
     const date = createdAt
         ?.toDate()
         .toLocaleDateString("nl-NL", { day: "numeric", month: "short" });
+
+    useEffect(() => {
+        async function fetchComments(){
+            const snapshot = await getDocs(collection(db, "posts", id, "comments"))
+            setCommentCount(snapshot.size);
+        }
+        fetchComments();
+    },[id]);
+
+    function increasCommentCount(){
+        setCommentCount(prev => prev + 1);
+    }
 
     return (
         <>
@@ -61,7 +76,7 @@ const PostCard = ({ post }) => {
                         {/* Comments */}
                         <div className="actions-box" onClick={() => setIsCommentModalOpen(true)}>
                             <img  src={CommentIcon} alt="Comment" />
-                            <p>{comments}</p>
+                            <p>{commentCount}</p>
                         </div>
 
                         {/* Shares */}
@@ -77,6 +92,7 @@ const PostCard = ({ post }) => {
             isOpen={isCommentModalOpen}
             onClose={() => setIsCommentModalOpen(false)}
             postId={id}
+            commentCount={increasCommentCount}
             />
         </>
     );

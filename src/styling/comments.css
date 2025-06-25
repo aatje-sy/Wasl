@@ -1,3 +1,20 @@
+.comment-modal {
+    max-height: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.comments-list{
+    max-height: 300px;
+    overflow-y: scroll;
+}
+
+.comment-item{
+    display: flex;
+    gap: var(--spacing-xsmall);
+}
+
 .comment-input-row {
     display: flex;
     align-items: center;

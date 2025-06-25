@@ -8,7 +8,7 @@ import SendIcon from '/src/assets/send-icon.svg';
 import userIcon from '/src/assets/user-icon.svg'
 
 
-const Comments = ({isOpen, onClose, postId}) => {
+const Comments = ({isOpen, onClose, postId, commentCount}) => {
     const [commentTxt, setCommentTxt] = useState("");
     const [comments, setComments] = useState([]);
     const auth = getAuth();
@@ -30,6 +30,7 @@ const Comments = ({isOpen, onClose, postId}) => {
                 createdAt: serverTimestamp(),
             })
             console.log('comment added')
+            commentCount();
         } catch (err) {
             console.error("Error: ", err);
         }
@@ -45,10 +46,11 @@ const Comments = ({isOpen, onClose, postId}) => {
             })
             .catch(err => console.error("Error: ", err));
     }, [isOpen, postId])
+
     if (!isOpen) return null;
     return (
         <div className="modal-overlay" onClick={onClose}>
-            <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <div className="modal-content comment-modal" onClick={(e) => e.stopPropagation()}>
                 <div className="buttons-container">
                     <button className="close-btn" onClick={onClose}>
                         <img src={CloseButtonIcon} alt="Close"/>
@@ -60,7 +62,11 @@ const Comments = ({isOpen, onClose, postId}) => {
                     {comments.map((comment, i) => (
                         <div key={i} className="comment-item">
                             <img src={comment.avatar} alt=""/>
-                            <strong>{ comment.username || "Onbekend"}:</strong> {comment.content}
+                            <div>
+                                <p>{comment.username}</p>
+                                <p>{comment.content}</p>
+                            </div>
+
                         </div>
                     ))}
                 </div>
