@@ -50,7 +50,7 @@ const Comments = ({isOpen, onClose, postId, commentCount}) => {
     if (!isOpen) return null;
     return (
         <div className="modal-overlay" onClick={onClose}>
-            <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <div className="modal-content comment-modal" onClick={(e) => e.stopPropagation()}>
                 <div className="buttons-container">
                     <button className="close-btn" onClick={onClose}>
                         <img src={CloseButtonIcon} alt="Close"/>
@@ -62,7 +62,11 @@ const Comments = ({isOpen, onClose, postId, commentCount}) => {
                     {comments.map((comment, i) => (
                         <div key={i} className="comment-item">
                             <img src={comment.avatar} alt=""/>
-                            <strong>{comment.username || "Onbekend"}:</strong> {comment.content}
+                            <div>
+                                <p>{comment.username}</p>
+                                <p>{comment.content}</p>
+                            </div>
+
                         </div>
                     ))}
                 </div>
