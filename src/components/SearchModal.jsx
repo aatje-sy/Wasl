@@ -53,7 +53,7 @@ export default function SearchModal({ onClose }) {
                     type="text"
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
-                    placeholder="Zoek naar gebruikers of posts..."
+                    placeholder="Search for users or posts..."
                     className="search-input"
                 />
                 <div className="search-results">

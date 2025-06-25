@@ -4,6 +4,7 @@
 @import "posting-modal.css";
 @import "profile-page.css";
 @import "search-modal.css";
+@import "edit-profile.css";
 @import "comments.css";
 * {
     margin: 0;

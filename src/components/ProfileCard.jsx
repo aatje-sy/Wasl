@@ -1,14 +1,16 @@
-import React, { useEffect, useState } from "react";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
-import { doc, getDoc, collection, query, where, getDocs } from "firebase/firestore";
-import { db } from "../firebase";
-import SettingsIcon from "/src/assets/settings-icon.svg";
+import React, {useEffect, useState} from "react";
+import {getAuth, onAuthStateChanged} from "firebase/auth";
+import {doc, getDoc, collection, query, where, getDocs} from "firebase/firestore";
+import {db} from "../firebase";
 import PostCard from "../components/PostCard";
+import EditProfileModal from "./EditProfileModal";
+import SettingsIcon from "/src/assets/settings-icon.svg";
 
 export default function ProfileCard() {
     const [userData, setUserData] = useState(null);
     const [loading, setLoading] = useState(true);
     const [userPosts, setUserPosts] = useState([]);
+    const [showEditModal, setShowEditModal] = useState(false);
 
     useEffect(() => {
         const auth = getAuth();
@@ -17,11 +19,13 @@ export default function ProfileCard() {
                 const docRef = doc(db, "users", user.uid);
                 const docSnap = await getDoc(docRef);
                 if (docSnap.exists()) {
-                    setUserData(docSnap.data());
+                    const data = docSnap.data();
+                    setUserData(data);
+
                     const postsRef = collection(db, "posts");
                     const q = query(postsRef, where("userId", "==", user.uid));
                     const qs = await getDocs(q);
-                    const arr = qs.docs.map(d => ({ id: d.id, ...d.data() }));
+                    const arr = qs.docs.map((d) => ({id: d.id, ...d.data()}));
                     setUserPosts(arr);
                 }
             }
@@ -29,6 +33,14 @@ export default function ProfileCard() {
         });
         return unsubscribe;
     }, []);
+
+    const handleEditClick = () => {
+        setShowEditModal(true);
+    };
+
+    const handleProfileUpdate = (updatedData) => {
+        setUserData(updatedData);
+    };
 
     if (loading) return <p>Loading...</p>;
     if (!userData) return <p>No user data found.</p>;
@@ -47,7 +59,7 @@ export default function ProfileCard() {
                         </div>
                         <div className="actions-button-container">
                             <button className="follow-button">Follow</button>
-                            <button className="follow-button edit-profile-button">Edit profile</button>
+                            <div onClick={handleEditClick} className="follow-button edit-profile-button">Edit Profile</div>
                         </div>
                     </div>
                     <div className="description-container">
@@ -58,16 +70,26 @@ export default function ProfileCard() {
                         <p>15.5K <span className="connection-label">Followers</span></p>
                     </div>
                 </div>
+
                 <hr className="profile-page-hr"/>
+
                 <div className="posts-container">
-                    {userPosts.map(post => (
+                    {userPosts.map((post) => (
                         <div key={post.id} className="post-card">
-                            <PostCard post={post} />
+                            <PostCard post={post}/>
                             <button className="edit-post-btn"></button>
                         </div>
                     ))}
                 </div>
             </div>
+
+            {showEditModal && (
+                <EditProfileModal
+                    userData={userData}
+                    onClose={() => setShowEditModal(false)}
+                    onUpdate={handleProfileUpdate}
+                />
+            )}
         </section>
     );
 }
