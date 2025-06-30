@@ -7,6 +7,8 @@
 @import "search-modal.css";
 @import "edit-profile.css";
 @import "comments.css";
+@import "habits-page.css";
+@import "habit-modal.css";
 * {
     margin: 0;
     padding: 0;
@@ -39,11 +41,13 @@ header {
 }
 
 main {
-    height: calc(100vh - 90px);
     display: flex;
     flex-direction: row;
-    justify-content:  space-between;
+    justify-content: flex-start;
+    gap: 2rem;
     width: 100%;
+    height: calc(100vh - 90px);
+    overflow: hidden;
 }
 
 .Nav-bar {
@@ -61,7 +65,7 @@ main {
     background-color: var(--special-color);
     border-top-left-radius: var(--radius-large);
     border-top-right-radius: var(--radius-large);
-    border: 1px solid #333;
+    border: 1px solid var(--primary-border-color);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     overflow-y: auto;
     scroll-behavior: smooth;

@@ -1,12 +1,12 @@
 import { Routes, Route } from "react-router-dom";
-import UpperHeader from './components/UpperHeader.jsx';
-import SideHeader from './components/SideHeader.jsx';
 import Feed from './components/Feed.jsx';
 import Goals from "./components/Goals.jsx";
 import Register from "./components/auth/Register.jsx";
 import Login from "./components/auth/Login.jsx";
 import Profile from "/src/components/ProfilePage.jsx";
 import OtherUserProfilePage from "./components/OtherUserProfilePage.jsx";
+import MainLayout from "./components/MainLayout";
+import HabitTracker from "./components/HabitTracker.jsx";
 import './styling/styling.css';
 
 function App() {
@@ -14,20 +14,20 @@ function App() {
         <Routes>
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/profile/:uid" element={<OtherUserProfilePage />} />
-            <Route path="/" element={
-                <>
-                    <UpperHeader />
-                    <main>
-                        <SideHeader />
+
+            <Route element={<MainLayout />}>
+                <Route path="/" element={
+                    <>
                         <Feed />
                         <Goals />
-                    </main>
-                </>
-            } />
+                    </>
+                } />
+                <Route path="/profile" element={<Profile />} />
+                <Route path="/profile/:uid" element={<OtherUserProfilePage />} />
+                <Route path="/habits" element={<HabitTracker />} />
+            </Route>
         </Routes>
-    );x
+    );
 }
 
 export default App;
