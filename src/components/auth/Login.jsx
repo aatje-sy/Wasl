@@ -6,6 +6,9 @@ import { collection, query, where, getDocs } from "firebase/firestore"; // Fires
 import { useNavigate } from "react-router-dom";                    // React Router redirect
 import './login.css';                                              // Corresponding CSS
 import { auth, db } from "../../firebase";                        // Your Firebase instances
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { doc, getDoc, setDoc } from "firebase/firestore";
+
 
 /**
  * Login form that accepts either "email" or "username" in a single field.
@@ -28,7 +31,7 @@ function Login() {
         let emailToUse = "";
 
         try {
-            // 1️⃣ Check if identifier contains '@' => treat as email:
+            // 1️Check if identifier contains '@' => treat as email:
             if (identifier.includes("@")) {
                 emailToUse = identifier.trim();
             } else {
@@ -64,6 +67,37 @@ function Login() {
         }
     };
 
+    const handleGoogleLogin = async () => {
+        setErr(""); // Clear error
+        const provider = new GoogleAuthProvider();
+
+        try {
+            // 1. Inloggen met Google
+            const result = await signInWithPopup(auth, provider);
+            const user = result.user;
+
+            // 2. Check of gebruiker al in Firestore staat
+            const userRef = doc(db, "users", user.uid);
+            const docSnap = await getDoc(userRef);
+
+            // 3. Zo niet, sla op in Firestore (of update)
+            if (!docSnap.exists()) {
+                await setDoc(userRef, {
+                    uid: user.uid,
+                    displayName: user.displayName || "",
+                    email: user.email || "",
+                    photoURL: user.photoURL || "",
+                    username: user.displayName ? user.displayName.replace(/\s/g, '').toLowerCase() : ""
+                });
+            }
+            // 4. Redirect
+            navigate("/");
+        } catch (error) {
+            setErr(error.message);
+        }
+    };
+
+
     return (
         <div className="page-wrapper">
             <div className="container-login">
@@ -90,8 +124,31 @@ function Login() {
                         onChange={(e) => setPassword(e.target.value)}
                     />
 
+
+
+
                     {/* Submit button */}
                     <button type="submit">Login</button>
+
+                    <p style={{ marginLeft: 147, marginTop: 4  }}>Or</p>
+
+
+                    <button
+                        type="button"
+                        className="google-login-btn"
+                        onClick={handleGoogleLogin}
+                                >
+                    <span className="google-icon">
+                          <img
+                               src="https://developers.google.com/identity/images/g-logo.png"
+                               alt="Google"
+                    width={24}
+                    height={24}
+
+                />
+              </span>
+                                    <span className="google-btn-text" >Log in with Google</span>
+                                </button>
 
                     {/* Link to Register page */}
                     <p className="login-link">
@@ -99,12 +156,16 @@ function Login() {
                         <a href="/register">Register</a>
                     </p>
 
+
+
+
                     {/* Show any error message */}
                     {err && <p className="error">{err}</p>}
                 </form>
             </div>
         </div>
     );
+
 }
 
 export default Login;

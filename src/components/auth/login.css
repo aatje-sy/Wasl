@@ -93,3 +93,38 @@ html, body {
     margin-top: 10px;
     text-align: center;
 }
+
+.google-login-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 12px 0;
+    background: #fff;
+    color: #444;
+    border: 1px solid #ddd;
+    border-radius: 40px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    box-shadow: 0 1px 2px rgba(60,64,67,.15);
+    transition: background 0.18s;
+    margin-bottom: 18px;
+}
+
+.google-login-btn:hover {
+    background: #f7f7f7;
+    border-color: #bbb;
+}
+
+.google-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.google-btn-text {
+    flex: 1;
+    text-align: center;
+}
