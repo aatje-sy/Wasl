@@ -22,3 +22,10 @@
     font-size: var(--font-size-small);
     color: var(--secondary-color);
 }
+.link-decoration{
+    text-decoration: none;
+    color: var(--secondary-color);
+}
+.link-decoration:hover{
+    text-decoration: underline;
+}

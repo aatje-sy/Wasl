@@ -6,7 +6,6 @@
     flex-direction: column;
     align-items: center;
 }
-
 .Profile-card {
     width: 75%;
     max-width: 750px;
@@ -19,7 +18,12 @@
     overflow-y: auto;
     scroll-behavior:  smooth;
 }
-
+.User-information{
+    height: 25%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
 .User-info-top-section {
     display: flex;
     align-items: center;
@@ -79,7 +83,8 @@
 .posts-container .post-card {
     position: relative;
     border-radius: var(--radius-regular);
-    padding: var(--spacing-regular);
+    padding-right: var(--spacing-regular);
+    padding-left: var(--spacing-regular);
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -109,4 +114,15 @@
 
 .edit-post-btn:hover {
     opacity: 1;
+}
+.profile-post-container{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.posts-container {
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-large);
 }

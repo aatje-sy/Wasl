@@ -1,12 +1,13 @@
-import React, {useEffect, useState} from "react";
-import { collection, getDocs } from "firebase/firestore";
+import React, { useState, useEffect } from "react";
+import { getDocs, collection } from "firebase/firestore";
 import { db } from "../firebase";
 import CommentIcon from "/src/assets/comment-icon.svg";
 import ShareIcon from "/src/assets/share-icon.svg";
 import LikesCount from "/src/likes-count/likes-count";
 import Comments from "./Comments.jsx";
+import {Link} from "react-router-dom";
 
-const PostCard = ({ post }) => {
+const PostCard = ({post}) => {
     const [isCommentModalOpen, setIsCommentModalOpen] = useState(false);
     const [commentCount, setCommentCount] = useState(0);
 
@@ -40,16 +41,16 @@ const PostCard = ({ post }) => {
     return (
         <>
             <div className="post-card">
-                <div className="side-container">
-                    <img
-                        src={userAvatarUrl || "/assets/profile-photo.png"}
-                        alt="Profile"
-                    />
-                </div>
-
                 <div className="details-container">
                     <div className="user-info-container">
-                        <h4>{username || "Unknown"}</h4>
+                        <Link to={`/profile/${post.userId}`} className="user-link">
+                            <img
+                                className="user-avatar-icon"
+                                src={userAvatarUrl || "/assets/profile-photo.png"}
+                                alt="Profile"
+                            />
+                            <h4>{username || "Unknown"}</h4>
+                        </Link>
                         <p className="post-date">{date || "Unknown date"}</p>
                     </div>
 
@@ -59,11 +60,7 @@ const PostCard = ({ post }) => {
                         <img
                             src={imageUrl}
                             alt="Post"
-                            style={{
-                                maxWidth: "100%",
-                                marginTop: "10px",
-                                borderRadius: "10px",
-                            }}
+                            className={"post-image"}
                         />
                     )}
 
@@ -81,18 +78,18 @@ const PostCard = ({ post }) => {
 
                         {/* Shares */}
                         <div className="actions-box">
-                            <img src={ShareIcon} alt="Share" />
+                            <img src={ShareIcon} alt="Share"/>
                             <p>{shares}</p>
                         </div>
                     </div>
                 </div>
             </div>
-            <hr className="divider" />
+            <hr className="divider"/>
             <Comments
-            isOpen={isCommentModalOpen}
-            onClose={() => setIsCommentModalOpen(false)}
-            postId={id}
-            commentCount={increasCommentCount}
+                isOpen={isCommentModalOpen}
+                onClose={() => setIsCommentModalOpen(false)}
+                postId={id}
+                commentCount={increasCommentCount}
             />
         </>
     );

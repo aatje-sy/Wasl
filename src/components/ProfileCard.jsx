@@ -4,7 +4,6 @@ import {doc, getDoc, collection, query, where, getDocs} from "firebase/firestore
 import {db} from "../firebase";
 import PostCard from "../components/PostCard";
 import EditProfileModal from "./EditProfileModal";
-import SettingsIcon from "/src/assets/settings-icon.svg";
 
 export default function ProfileCard() {
     const [userData, setUserData] = useState(null);
@@ -73,11 +72,10 @@ export default function ProfileCard() {
 
                 <hr className="profile-page-hr"/>
 
-                <div className="posts-container">
+                <div className="profile-post-container">
                     {userPosts.map((post) => (
-                        <div key={post.id} className="post-card">
+                        <div key={post.id} className="profile-post-card">
                             <PostCard post={post}/>
-                            <button className="edit-post-btn"></button>
                         </div>
                     ))}
                 </div>
