@@ -1,29 +1,35 @@
 .comment-modal {
     max-height: 50%;
+    height: 600px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    padding-bottom: 5px;
 }
-
-.comments-list{
+.comments-list {
     max-height: 300px;
+    height: 100%;
     overflow-y: scroll;
 }
-
-.comment-item{
+.comment-item {
     display: flex;
     gap: var(--spacing-xsmall);
+    padding: 0.75rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
-
+.comment-item:last-child {
+    border-bottom: none;
+}
 .comment-input-row {
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    padding: 0.5rem;
     margin: 0.5rem 0;
     background-color: #1c1c1c;
     border-radius: var(--radius-large);
+    overflow: hidden;
 }
-
 .comment-input {
     flex: 1;
     padding: 0.6rem 1rem;
@@ -33,17 +39,28 @@
     color: var(--secondary-color);
 
 }
-
 .comment-input:focus {
     outline: none;
 }
-
+.post-btn-container {
+    display: flex;
+    align-items: center;
+    padding: 1rem 0;
+}
 .comment-send-icon {
     background-color: var(--secondary-color);
     border: none;
-    border-radius: var(--radius-regular);
+    border-radius: var(--radius-large);
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 0.6rem;
+    height: 35px;
+    width: 40px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
 }
-
+.comment-send-icon img {
+    height: 18px;
+    width: 18px;
+}
